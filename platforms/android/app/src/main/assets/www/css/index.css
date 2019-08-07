@@ -1,0 +1,19 @@
+.mainContainer {
+	margin-top:40%;
+}
+
+.innerForm {
+    margin-top:20%;
+}
+
+.bgDe {
+    background-color:#dedede;
+}
+
+#divAlert {
+    display:none;
+}
+
+.headerLogo{
+    width:70%;
+}

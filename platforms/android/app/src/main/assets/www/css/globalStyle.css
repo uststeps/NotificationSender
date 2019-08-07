@@ -1,0 +1,184 @@
+@charset "windows-1252";
+
+/*FontAwesome CSS*/
+@import url("../lib/font-awesome/css/fontawesome-all.css");
+/*Fontastic Custom Icon Font-*/
+@import url("../css/fontastic.css");
+/*Blue Theme*/
+@import url("../css/style.blue.css");
+
+@font-face {
+    font-family: 'serratbold';
+    src: url('montserrat-bold_0-webfont.woff2') format('woff2'),
+         url('montserrat-bold_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'serratlight';
+    src: url('montserrat-light_0-webfont.woff2') format('woff2'),
+         url('montserrat-light_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'serratregular';
+    src: url('montserrat-regular_0-webfont.woff2') format('woff2'),
+         url('montserrat-regular_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'serratultra';
+    src: url('montserrat-ultralight_0-webfont.woff2') format('woff2'),
+         url('montserrat-ultralight_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* GLOBAL STYLES*/
+
+
+body,html {
+
+    -webkit-touch-callout: none;             
+    -webkit-text-size-adjust: none;            
+    -webkit-user-select: none;               
+	background-color:#dedede;
+    background-attachment:fixed;
+
+}
+
+.indexBody{
+	background-color:#ffffff;
+}
+
+
+.app {
+
+    position:absolute;         
+    left:0%;
+    top:0%;              
+    width:100%;               
+    text-align:center;
+        
+}
+
+
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:0;  
+
+        }
+}
+
+#panel {
+
+	background-color:#dedede;
+}
+
+.bodyContainer {
+	
+}
+
+.globalButtonStyle {
+		width:100%;
+		border: none;
+		font-size:18px;
+		font-family: 'serratbold' ;
+		color:#111111;
+		background-color:#eaac19;
+		background-repeat:no-repeat;
+		cursor:pointer;
+		overflow: hidden;
+		outline:none;
+		text-align:center;
+		vertical-align:center;
+		padding-top: 10px;
+		padding-bottom:7px;
+		vertical-align: middle;
+		text-transform:uppercase;
+}
+
+
+.maxlength-feedback{
+    font-size: 12px;
+    color: #999;
+    display:block;
+    text-align: right !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 0 !important;
+    margin-left: 0 !important;
+    border: none !important;
+}
+
+.yellow{
+    background: #f1c40f;
+    color: #111;
+}
+
+.lt-yellow{
+    background: #FDE3A7;
+    color: #111;
+}
+
+.green{
+    background: #27ae60;
+    color: #fff;
+}
+
+.lt-green{
+    background: #90C695;
+    color: #111;
+}
+
+.orange{
+    background: #e67e22;
+    color: #fff;
+}
+
+.lt-orange{
+    background: #EB974E;
+    color: #111;
+}
+
+table.dataTable{
+    margin-top: 0 !important;    
+    margin-bottom: 0 !important;
+}
+
+
+#divLoading {
+   
+    
+}
+
+#divTable {
+    display:none;
+}
+
+
+
+
+

@@ -1,0 +1,18 @@
+#alert {
+    display:none;
+}
+
+.cardContainer {
+    width:95%;
+    margin-top:10px;
+    background-color:#ffffff;
+}
+
+.sendContainer {
+    margin-top:10%;
+}
+
+
+.confirmModal {
+    margin: 0 auto; 
+}

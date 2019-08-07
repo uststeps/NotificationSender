@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.steps.admin.push" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="Battery">
+        <param name="android-package" value="org.apache.cordova.batterystatus.BatteryListener" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Contacts">
+        <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>UST Push Notification</name>
+    <description>
+        Send Notification to all student of UST with the Student portal application installed to their respective devices.
+    </description>
+    <author email="steps@ust.edu.ph" href="http://steps.ust.edu.ph/contacts">
+        UST STEPS Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
+    <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
+    <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
+    <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
+    <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
+    <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
+    <resource-file src="google-services.json" target="app/google-services.json" />
+    <access origin="http://*" />
+    <access origin="https://*" />
+    <allow-intent href="market:*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="SplashScreenDelay" value="0" />
+    <preference name="FadeSplashScreenDuration" value="0" />
+</widget>

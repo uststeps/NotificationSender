@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.hidden {
+    display:none;
+}
+
+.studentSearchDiv {
+    display:none;
+}
+
+.loadingAlert {
+    display:none;
+    
+}
+
+.sectionDiv{
+    
+    display:none;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+		<meta http-equiv="Content-Security-Policy" content="img-src 'self' data: ; default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src * " />
+        <link rel="stylesheet" href="css/bootstrap.min.css"         />
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css"   />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/nav.css" />	
+<script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script src="js/firebase.js"></script>
+
+	
+        <title>PushSender: Login</title>
+		
+    </head>
+    <body>
+
+	
+	<div class="app">
+       	<div class="header">
+				<center>
+					<img class="topLogo" src="img/logoTop.png"/>
+				</center>
+		</div>
+        
+           <div class="page login-page ">
+            <div class="container mainLogin bgDe">
+                <div class="form-outer text-center d-flex align-items-center ">
+                    <div class="form-inner innerForm">
+                        <img src="img/headerLogo.png" class="w-50 mt-3 mb-3 headerLogo"/>
+                       
+                 
+                        
+                        <p class="ml-3 mr-3"></p>
+                        
+                        <div id="divAlert" class="alert alert-danger">
+                            <strong>Login Failed</strong> Invalid Username/Password
+                        </div>
+                        
+                        <form method="post" class="text-left form-validate" action="Send.html">
+                            <div class="form-group-material">
+                          
+                                <input id="login-username" type="text" name="loginUsername"  class="form-control" placeholder="USERNAME">
+                                
+                            </div>
+                            
+                            <div class="form-group-material">
+                                <input id="login-password" type="password" name="loginPassword" class="form-control" placeholder="PASSWORD">
+                            </div>
+                            <center>
+                                <button class="globalButtonStyle" onclick="return app.onLogin();">LOGIN</button>
+                            </center>
+                        </form>
+                    </div>
+                    
+                    <div class="copyrights text-center">
+                        Copyright &copy; 2018 University of Santo Tomas. <br/>Powered by Santo Tomas e-Service Providers
+                    </div>
+                </div>
+            </div>
+            </div>
+  
+    </div>
+	
+	
+	<!--#########################################################-->
+    <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+       
+		app.initialize();
+		app.onLoad();
+    </script>
+	<link rel="stylesheet" type="text/css" href="css/globalStyle.css"  charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/nav.css" />
+	<!--#########################################################-->
+
+	
+    </body>
+</html>
