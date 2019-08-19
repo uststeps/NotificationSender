@@ -1,4 +1,4 @@
-#Wed Aug 07 10:08:42 SGT 2019
-base.0=D\:\\WINDOWS.OLD.PREFORMAT.BACKUP\\Current\\PushNotificationAdminV2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Mon Aug 19 08:16:58 SGT 2019
+base.0=D\:\\PROJECTS\\MobileProject\\PushNotificationAdminV2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
-file.0=D\:\\WINDOWS.OLD.PREFORMAT.BACKUP\\Current\\PushNotificationAdminV2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+file.0=D\:\\PROJECTS\\MobileProject\\PushNotificationAdminV2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

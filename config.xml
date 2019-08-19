@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.steps.admin.push" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.steps.myuste.push" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>UST Push Notification</name>
     <description>
         Send Notification to all student of UST with the Student portal application installed to their respective devices.
     </description>
     <author email="steps@ust.edu.ph" href="http://steps.ust.edu.ph/contacts">
-        UST STEPS Team
+        UST STEPS
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />

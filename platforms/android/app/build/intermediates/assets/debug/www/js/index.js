@@ -43,7 +43,7 @@ var app = {
 
         }
         
-        if ($("#login-username").val() == "secgen" && $("#login-password").val() == passFlag) {
+        if ($("#login-username").val() == "registrar" && $("#login-password").val() == passFlag) {
             
             return true;
         } else if ($("#login-username").val() ==  ""|| $("#login-password").val() == ""){
