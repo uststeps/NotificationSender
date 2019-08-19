@@ -45,10 +45,10 @@ var app = {
 		var toTxt ="";
 
 
-		//toTxtAnd = "andstudent";
-        //toTxtIos =  "iosstudent";
-		toTxtAnd = "gurus-test"; // TEST TOPIC
-        toTxtIos =  "gurus-test"; // TEST TOPIC
+		toTxtAnd = "andstudent";
+        toTxtIos =  "iosstudent";
+		//toTxtAnd = "gurus-test"; // TEST TOPIC
+        //toTxtIos =  "gurus-test"; // TEST TOPIC
 		
         if (titleTxt == "" || titleTxt == null) {
             alert("Title cannot be empty.");
