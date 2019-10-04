@@ -26,7 +26,7 @@ var app = {
     },
     
     gotoPage: function(page){
-        window.location.replace(page);
+        window.location.replace(page); 
     },
 	
 	onLoad: function() {
@@ -45,8 +45,8 @@ var app = {
 		var toTxt ="";
 
 
-		toTxtAnd = "andstudent";
-        toTxtIos =  "iosstudent";
+		toTxtAnd = "andstudenttest";
+        toTxtIos =  "iosstudenttest";
 		//toTxtAnd = "gurus-test"; // TEST TOPIC
         //toTxtIos =  "gurus-test"; // TEST TOPIC
 		
@@ -116,16 +116,16 @@ var app = {
                                     
 									if (iosSent && andSent) {
                                         alert("Notification Sent!");
-                                        //app.logPush(titleTxt,bodyTxt,1,1,0);
+                                        app.logPush(titleTxt,bodyTxt,1,1,0);
                                     } else if (!iosSent && andSent) {
                                         alert("Notification sent to android device but encounter an error sending to iOS device, please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     } else if (iosSent && !andSent){
                                         alert("Notification sent to iOS device but encounter an error sending to android device, please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     } else if (!iosSent && !andSent){
                                         alert("Notification sending failed! please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     }
 								} ,
 								error: function(xhr, statusText, errorCode) {
@@ -157,6 +157,7 @@ var app = {
   
     logPush: function(subj,body,stat,allFlag,empNum){
         //alert(localStorage.getItem("server") + "pushLog?subj=" + subj + "&text=" + body +  "&status=" + stat +  "&flag=" + allFlag + "&emp=" + empNum);
+		/*
 		$.ajax({
 			  url: localStorage.getItem("server") + "pushLog?subj=" + subj + "&text=" + body +  "&status=" + stat +  "&flag=" + allFlag + "&emp=" + empNum,
 			  type: "get",
@@ -167,7 +168,31 @@ var app = {
 			  error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert(JSON.stringify(XMLHttpRequest));
 			  }
-			});
+			})
+			*/
+		var notifDetails = {
+			subject : subj,
+			body : body,
+			status : parseInt(stat),
+			allflag: parseInt(allFlag) ,
+			by: "registrar"
+			
+		};
+			
+		$.ajax({
+			url: "http://10.1.16.29:7101/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification",
+			dataType: "json",
+			type: "POST",
+			beforeSend: function(head){
+				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
+			}, 
+			success: function(data) {
+				alert(JSON.stringify(data));
+			},
+			error: function(jqXHR	, textStatus, errorThrown) {  
+				alert(JSON.stringify(jqXHR));
+			}
+		});;
 			
 	
 	}

@@ -35,7 +35,7 @@
       "PACKAGE_NAME": "com.steps.push.admin"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.steps.admin.push"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     }
   },
   "dependent_plugins": {
