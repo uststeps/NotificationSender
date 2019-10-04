@@ -187,10 +187,10 @@ var app = {
 				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
 			}, 
 			success: function(data) {
-		
+				alert(JSON.stringify(data));
 			},
 			error: function(jqXHR	, textStatus, errorThrown) {  
-						
+				alert(JSON.stringify(jqXHR));
 			}
 		});;
 			
