@@ -187,8 +187,7 @@ var app = {
 				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
 			}, 
 			success: function(data) {
-				
-			}
+		
 			},
 			error: function(jqXHR	, textStatus, errorThrown) {  
 						
