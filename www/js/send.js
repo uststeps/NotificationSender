@@ -26,7 +26,7 @@ var app = {
     },
     
     gotoPage: function(page){
-        window.location.replace(page);
+        window.location.replace(page); 
     },
 	
 	onLoad: function() {
@@ -45,8 +45,8 @@ var app = {
 		var toTxt ="";
 
 
-		toTxtAnd = "andstudent";
-        toTxtIos =  "iosstudent";
+		toTxtAnd = "andstudenttest";
+        toTxtIos =  "iosstudenttest";
 		//toTxtAnd = "gurus-test"; // TEST TOPIC
         //toTxtIos =  "gurus-test"; // TEST TOPIC
 		
@@ -116,16 +116,16 @@ var app = {
                                     
 									if (iosSent && andSent) {
                                         alert("Notification Sent!");
-                                        //app.logPush(titleTxt,bodyTxt,1,1,0);
+                                        app.logPush(titleTxt,bodyTxt,1,1,0);
                                     } else if (!iosSent && andSent) {
                                         alert("Notification sent to android device but encounter an error sending to iOS device, please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     } else if (iosSent && !andSent){
                                         alert("Notification sent to iOS device but encounter an error sending to android device, please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     } else if (!iosSent && !andSent){
                                         alert("Notification sending failed! please try again");
-                                        //app.logPush(titleTxt,bodyTxt,0,1,0);
+                                        app.logPush(titleTxt,bodyTxt,0,1,0);
                                     }
 								} ,
 								error: function(xhr, statusText, errorCode) {
