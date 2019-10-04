@@ -140,7 +140,7 @@ var app = {
 					 
 				} ,
 				error: function(xhr, statusText, errorCode) {
-					//alert(JSON.stringify(xhr));
+					alert(JSON.stringify(xhr));
 				}
 			
 			}

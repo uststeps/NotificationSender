@@ -29,6 +29,10 @@
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>UST Push Notification</name>
     <description>
         Send Notification to all student of UST with the Student portal application installed to their respective devices.
@@ -46,9 +50,13 @@
     <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
     <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
     <resource-file src="google-services.json" target="app/google-services.json" />
-    <access origin="http://*" />
-    <access origin="https://*" />
     <allow-intent href="market:*" />
+    <allow-intent href="http://*/*/*/*/*" />
+    <allow-intent href="https://*/*/*/*/*" />
+    <allow-intent href="http://*/*/*/*" />
+    <allow-intent href="https://*/*/*/*" />
+    <allow-intent href="http://*/*/*" />
+    <allow-intent href="https://*/*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -60,8 +68,4 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="SplashScreenDelay" value="0" />
     <preference name="FadeSplashScreenDuration" value="0" />
-    <feature name="Whitelist">
-        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
-        <param name="onload" value="true" />
-    </feature>
 </widget>

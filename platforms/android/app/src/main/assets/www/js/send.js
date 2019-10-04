@@ -129,7 +129,7 @@ var app = {
                                     }
 								} ,
 								error: function(xhr, statusText, errorCode) {
-									//alert("Sending Failed");
+									alert("Sending of notification failed with error code: " + JSON.stringify(xhr));
 								}
 							
 							}
@@ -140,7 +140,7 @@ var app = {
 					 
 				} ,
 				error: function(xhr, statusText, errorCode) {
-					//alert(JSON.stringify(xhr));
+					alert(JSON.stringify(xhr));
 				}
 			
 			}
@@ -180,17 +180,18 @@ var app = {
 		};
 			
 		$.ajax({
-			url: "http://10.1.16.29:7101/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification",
+			url: "https://myuste.ust.edu.ph/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification",
 			dataType: "json",
 			type: "POST",
 			beforeSend: function(head){
 				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
 			}, 
 			success: function(data) {
-				alert(JSON.stringify(data));
+				//alert(JSON.stringify(data));
 			},
 			error: function(jqXHR	, textStatus, errorThrown) {  
-				alert(JSON.stringify(jqXHR));
+				alert("There was a problem logging the notification : error code - " + JSON.stringify(jqXHR));
+				//alert(JSON.stringify(jqXHR));
 			}
 		});;
 			
