@@ -180,7 +180,7 @@ var app = {
 		};
 			
 		$.ajax({
-			url: "http://10.1.16.29:7101/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification"
+			url: "http://10.1.16.29:7101/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification",
 			dataType: "json",
 			type: "POST",
 			beforeSend: function(head){
