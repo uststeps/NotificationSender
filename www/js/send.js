@@ -157,6 +157,7 @@ var app = {
   
     logPush: function(subj,body,stat,allFlag,empNum){
         //alert(localStorage.getItem("server") + "pushLog?subj=" + subj + "&text=" + body +  "&status=" + stat +  "&flag=" + allFlag + "&emp=" + empNum);
+		/*
 		$.ajax({
 			  url: localStorage.getItem("server") + "pushLog?subj=" + subj + "&text=" + body +  "&status=" + stat +  "&flag=" + allFlag + "&emp=" + empNum,
 			  type: "get",
@@ -167,7 +168,32 @@ var app = {
 			  error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert(JSON.stringify(XMLHttpRequest));
 			  }
-			});
+			})
+			*/
+		var notifDetails = {
+			subject : subj,
+			body : body,
+			status : parseInt(stat),
+			allflag: parseInt(allFlag) ,
+			by: "registrar"
+			
+		};
+			
+		$.ajax({
+			url: "http://10.1.16.29:7101/myUSTE-StudentPortal-REST-RESTWebService-context-root/resources/service/lognotification"
+			dataType: "json",
+			type: "POST",
+			beforeSend: function(head){
+				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
+			}, 
+			success: function(data) {
+				
+			}
+			},
+			error: function(jqXHR	, textStatus, errorThrown) {  
+						
+			}
+		});;
 			
 	
 	}
