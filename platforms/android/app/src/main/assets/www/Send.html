@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <meta http-equiv="Content-Security-Policy" content="default-src * gap://* file; style-src 'self' 'unsafe-inline'; script-src 'self'  'unsafe-inline' 'unsafe-eval' ">
-		<meta name="referrer" content="https://myuste.ust.edu.ph" />
+        <meta http-equiv="Content-Security-Policy" content="img-src 'self' data: ; default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src * " />
+        
 
         <title>PushSender: Send</title>
         <link rel="stylesheet" href="css/bootstrap.min.css"         />
@@ -46,7 +46,7 @@
         <div class="container sendContainer">
             <div class="card" >
                 <div class="card-header d-flex align-items-center ">
-                   <h1 class="card-title">Notification Sender TESTER</h1> 
+                   <h1 class="card-title">Notification Sender</h1> 
                                 
                 </div>
 
@@ -55,10 +55,20 @@
                     <div id="alert" class="alert alert-info">
                         <label>Sending notification please wait...</label>
                     </div>
+					<div id="prompt" class="alert">
+						
+					</div>
                     <div id="formHolder">
                         <label>Subject</label>
                         <input id="txtTitle" value="OFFICE OF THE REGISTRAR" class="sendInput form-control " type="text" placeholder="(Subject)" />
                         <br/> <br/>
+                        <label>Send to</label> <br/>
+						<select class="form-control" id="sendto">
+							<option value="all">All Devices</option>
+							<option value="and">Android Devices</option>
+							<option value="ios">iOS Devices</option>
+						</select>
+						<br/> <br/>
                         <label>Message</label> <br/>
                         <textarea id="txtBody"  class="sendInput form-control"  placeholder="(Notification Body)" rows=10 maxlength="300"></textarea>
                         <br/><br/>
@@ -83,7 +93,7 @@
                 <h1 class="modal-title">Alert</h1>
               </div>
               <div class="modal-body">
-                <h2>You are about to send a notification to all student AS TEST. <br/><br/> Send notification?</h2>
+                <h2> You are about to send a notification to all student.<br/><br/> Send notification?</h2>
               </div> 
               <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal" onclick="app.sendPush()">Send Notification</button>

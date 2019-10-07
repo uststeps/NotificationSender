@@ -2,6 +2,10 @@
     display:none;
 }
 
+#prompt {
+	display:none;
+}
+
 .cardContainer {
     width:95%;
     margin-top:10px;

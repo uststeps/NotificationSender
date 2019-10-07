@@ -8,39 +8,38 @@
   },
   "installed_plugins": {
     "cordova-plugin-battery-status": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-contacts": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-device-motion": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-device-orientation": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "com.steps.push.admin"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.steps.push.admin"
+      "PACKAGE_NAME": "com.steps.myuste.push"
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.steps.myuste.push"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.steps.myuste.push"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.steps.myuste.push"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.steps.push.admin"
-    }
-  }
+  "dependent_plugins": {}
 }

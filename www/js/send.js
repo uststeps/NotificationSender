@@ -43,10 +43,14 @@ var app = {
 		var bodyTxt = $("#txtBody").val();
 		var titleTxt = $("#txtTitle").val();
 		var toTxt ="";
+		var authKey = "key=AAAAeRnJ95M:APA91bHpZ6CZfV2RchWaGeD9SkSlQdIOM6wrXxUJHQl_ilNQB4KBWrfh3EbOYvOn7ACnmYrziB_JeWRxrk4bXEgafsKIUgmn-cBV9yfHuZitx3x0jDRtMW-qy3xSVA2XOiTTb-c3YlMj";
+		var contentTypeVal = 'application/json';
 
-
-		toTxtAnd = "andstudenttest";
-        toTxtIos =  "iosstudenttest";
+		toTxtAnd = "andstudent";
+        toTxtIos =  "iosstudent";
+		
+		var fcmAPIURL = "https://fcm.googleapis.com/fcm/send";
+		
 		//toTxtAnd = "gurus-test"; // TEST TOPIC
         //toTxtIos =  "gurus-test"; // TEST TOPIC
 		
@@ -57,6 +61,7 @@ var app = {
         } else {
 			$("#formHolder").hide();
             $("#alert").show();
+			$("#prompt").hide();
 			
 			var iosSent = false;
 			var andSent = false;
@@ -65,86 +70,205 @@ var app = {
 
             //alert("trying to send...");
                 
-			$.ajax(
-			{	type: "POST",
-				url: "https://fcm.googleapis.com/fcm/send",
-				headers: { Authorization: "key=AAAAeRnJ95M:APA91bHpZ6CZfV2RchWaGeD9SkSlQdIOM6wrXxUJHQl_ilNQB4KBWrfh3EbOYvOn7ACnmYrziB_JeWRxrk4bXEgafsKIUgmn-cBV9yfHuZitx3x0jDRtMW-qy3xSVA2XOiTTb-c3YlMj" } ,
-				contentType: 'application/json',
-				data: JSON.stringify( 
-										{
-										   "to" :  "/topics/" + toTxtAnd,
-										   "data":
-										   {
-											   "title" : titleTxt,
-											   "message" : bodyTxt,
-                                               "receivedDate"  : date ,
-                                               "content-available" : 1  
-										   }
-										} 
-									),
-				success: function(data) {
-					andSent = true;
-                    	
-					//########################################################
-					 $.ajax(
-							{	type: "POST",
-								url: "https://fcm.googleapis.com/fcm/send",
-								headers: { Authorization: "key=AAAAeRnJ95M:APA91bHpZ6CZfV2RchWaGeD9SkSlQdIOM6wrXxUJHQl_ilNQB4KBWrfh3EbOYvOn7ACnmYrziB_JeWRxrk4bXEgafsKIUgmn-cBV9yfHuZitx3x0jDRtMW-qy3xSVA2XOiTTb-c3YlMj" } ,
-								contentType: 'application/json',
-								data: JSON.stringify( 
-														{
-														   "to" :  "/topics/" + toTxtIos,
-															"notification" : {
-															   "title" : titleTxt,
-															   "body"  : bodyTxt
-														   },
-														   "data":
-														   {
-															   "receivedDate" : "TEST DATE"
-														   },
-														   "priority" : "high"
-														} 
-													),
-								success: function(data) {
-									iosSent = true;
-                                    
-                                    
-                                    $("#formHolder").show();
-                                    $("#alert").hide();
-                                    
-                                    
-                                    
-									if (iosSent && andSent) {
-                                        alert("Notification Sent!");
-                                        app.logPush(titleTxt,bodyTxt,1,1,0);
-                                    } else if (!iosSent && andSent) {
-                                        alert("Notification sent to android device but encounter an error sending to iOS device, please try again");
-                                        app.logPush(titleTxt,bodyTxt,0,1,0);
-                                    } else if (iosSent && !andSent){
-                                        alert("Notification sent to iOS device but encounter an error sending to android device, please try again");
-                                        app.logPush(titleTxt,bodyTxt,0,1,0);
-                                    } else if (!iosSent && !andSent){
-                                        alert("Notification sending failed! please try again");
-                                        app.logPush(titleTxt,bodyTxt,0,1,0);
-                                    }
-								} ,
-								error: function(xhr, statusText, errorCode) {
-									alert("Sending of notification failed with error code: " + JSON.stringify(xhr));
+			if ($("#sendto").val() == "all"){
+							$.ajax(
+								{	type: "POST",
+									url: fcmAPIURL,
+									headers: { Authorization: authKey } ,
+									contentType: contentTypeVal,
+									data: JSON.stringify( 
+															{
+															   "to" :  "/topics/" + toTxtAnd,
+															   "data":
+															   {
+																   "title" : titleTxt,
+																   "message" : bodyTxt,
+																   "receivedDate"  : date ,
+																   "content-available" : 1  
+															   }
+															} 
+														),
+									success: function(data) {
+										andSent = true;
+											
+										//########################################################
+										 $.ajax(
+												{	type: "POST",
+													url: fcmAPIURL ,
+													headers: { Authorization: authKey } ,
+													contentType: contentTypeVal,
+													data: JSON.stringify( 
+																			{
+																			   "to" :  "/topics/" + toTxtIos,
+																				"notification" : {
+																				   "title" : titleTxt,
+																				   "body"  : bodyTxt
+																			   },
+																			   "data":
+																			   {
+																				   "receivedDate" : date
+																			   },
+																			   "priority" : "high"
+																			} 
+																		),
+													success: function(data) {
+														iosSent = true;
+														
+														
+														$("#formHolder").show();
+														$("#alert").hide();
+														
+														
+														
+														if (iosSent && andSent) {
+															alert("Notification Sent!");
+															$("#prompt").removeClass();
+															$("#prompt").addClass("alert alert-success");
+															$("#prompt").html("Notification sent");
+															$("#prompt").show();
+															app.logPush(titleTxt,bodyTxt,1,1,0);
+														} else if (!iosSent && andSent) {
+															alert("Notification sent to android device but encounter an error sending to iOS device, please try again");
+															$("#prompt").removeClass();
+															$("#prompt").addClass("alert alert-warning");
+															$("#prompt").html("Notification sent on android but not on iOS devices.");
+															$("#prompt").show();
+															app.logPush(titleTxt,bodyTxt,0,1,0);
+														} else if (iosSent && !andSent){
+															alert("Notification sent to iOS device but encounter an error sending to android device, please try again");
+															$("#prompt").removeClass();
+															$("#prompt").addClass("alert alert-warning");
+															$("#prompt").html("Notification sent on iOS but not on android devices.");
+															$("#prompt").show();
+															app.logPush(titleTxt,bodyTxt,0,1,0);
+														} else if (!iosSent && !andSent){
+															alert("Notification sending failed! please try again");
+															$("#prompt").removeClass();
+															$("#prompt").addClass("alert alert-danger");
+															$("#prompt").html("Notification was not sent on both devices.");
+															$("#prompt").show();
+															app.logPush(titleTxt,bodyTxt,0,1,0);
+														}
+													} ,
+													error: function(xhr, statusText, errorCode) {
+														$("#formHolder").show();
+														$("#alert").hide();
+														alert("Notification sent to android device but encounter an error sending to iOS device, please try again");
+														$("#prompt").removeClass();
+														$("#prompt").addClass("alert alert-warning");
+														$("#prompt").html("Notification sent on android but not on iOS devices.");
+														$("#prompt").show();
+														app.logPush(titleTxt,bodyTxt,0,1,0);
+													}
+												
+												}
+											);
+										 
+										 
+										 //########################################################
+										 
+									} ,
+									error: function(xhr, statusText, errorCode) {
+										$("#formHolder").show();
+										$("#alert").hide();
+										alert("Sending of notification failed.");
+										$("#prompt").removeClass();
+										$("#prompt").addClass("alert alert-danger");
+										$("#prompt").html("Notification was not sent on both devices.");
+										$("#prompt").show();
+										app.logPush(titleTxt,bodyTxt,0,1,0);
+									}
+								
 								}
+								);
+			} else if ($("#sendto").val() == "and") {
+				$.ajax(
+					{	type: "POST",
+						url: fcmAPIURL,
+						headers: { Authorization: authKey } ,
+						contentType: contentTypeVal,
+						data: JSON.stringify( 
+												{
+												   "to" :  "/topics/" + toTxtAnd,
+												   "data":
+												   {
+													   "title" : titleTxt,
+													   "message" : bodyTxt,
+													   "receivedDate"  : date ,
+													   "content-available" : 1  
+												   }
+												} 
+											),
+						success: function(data) {
+							andSent = true;
+							alert("Notification Sent!");
+							$("#prompt").removeClass();
+							$("#prompt").addClass("alert alert-success");
+							$("#prompt").html("Notification sent to target devices: android");
+							$("#prompt").show();
+							app.logPush(titleTxt,bodyTxt,1,1,0);
+							$("#formHolder").show();
+							$("#alert").hide();			
+							 
+						} ,
+						error: function(xhr, statusText, errorCode) {
+							$("#formHolder").show();
+							$("#alert").hide();
+							alert("Sending of notification failed.");
+							$("#prompt").removeClass();
+							$("#prompt").addClass("alert alert-danger");
+							$("#prompt").html("Notification was not sent on target devices: android.");
+							$("#prompt").show();
+							app.logPush(titleTxt,bodyTxt,0,1,0);
+						}
+					
+					}
+					);
+			} else if ($("#sendto").val() == "ios"){
+				 $.ajax(
+					{	type: "POST",
+						url: fcmAPIURL,
+						headers: { Authorization:authKey } ,
+						contentType: contentTypeVal,
+						data: JSON.stringify( 
+								{
+									"to" :  "/topics/" + toTxtIos,
+									"notification" : {
+								    "title" : titleTxt,
+									"body"  : bodyTxt
+										},
+									"data":
+										{"receivedDate" : date},
+									"priority" : "high"
+								} 
+						),
+						success: function(data) {
+							iosSent = true;
+							alert("Notification Sent!");
+							$("#prompt").removeClass();
+							$("#prompt").addClass("alert alert-success");
+							$("#prompt").html("Notification sent to target devices: iOS");
+							$("#prompt").show();
+							app.logPush(titleTxt,bodyTxt,1,1,0);
+							$("#formHolder").show();
+							$("#alert").hide();
+						} ,
+						error: function(xhr, statusText, errorCode) {
+							$("#formHolder").show();
+							$("#alert").hide();
+							alert("Sending of notification failed.");
+							$("#prompt").removeClass();
+							$("#prompt").addClass("alert alert-danger");
+							$("#prompt").html("Notification was not sent on target devices: iOS.");
+							$("#prompt").show();
+							app.logPush(titleTxt,bodyTxt,0,1,0);
 							
-							}
-						);
-					 
-					 
-					 //########################################################
-					 
-				} ,
-				error: function(xhr, statusText, errorCode) {
-					alert(JSON.stringify(xhr));
-				}
-			
+						}
+					}
+				);
 			}
-			);
+				
+
             
            // alert("sending finished");
             
@@ -169,7 +293,7 @@ var app = {
                 //alert(JSON.stringify(XMLHttpRequest));
 			  }
 			})
-			*/
+		*/
 		var notifDetails = {
 			subject : subj,
 			body : body,
@@ -187,6 +311,9 @@ var app = {
 				head.setRequestHeader('notifDetails'  ,JSON.stringify(notifDetails)); 
 			}, 
 			success: function(data) {
+				if (data["status"]=="error"){
+					alert("There was a problem logging the notification");
+				}
 				//alert(JSON.stringify(data));
 			},
 			error: function(jqXHR	, textStatus, errorThrown) {  
